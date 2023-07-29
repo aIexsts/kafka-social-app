@@ -22,15 +22,17 @@ public class Producer {
     private final KafkaTemplate<String, Post> postKafkaTemplate;
     private final KafkaTemplate<String, Like> likeKafkaTemplate;
     private final KafkaTemplate<String, Comment> commmentKafkaTemplate;
+    private final static int POSTS_NUMBER = 100;
+
     @EventListener(ApplicationStartedEvent.class)
     public void appStartedListener() {
         System.out.println("[APP STARTED]");
 
-        for (int postId = 1; postId <= 10000; postId++) {
+        for (int postId = 1; postId <= POSTS_NUMBER; postId++) {
             createPost("post_" + postId);
         }
 
-        log.info("[PRODUCING 10000 POSTS]");
+        log.info("[PRODUCING " + POSTS_NUMBER + " POSTS]");
     }
 
     private void createPost(String postId) {
@@ -50,8 +52,8 @@ public class Producer {
     public void generateLike() {
         Faker faker = Faker.instance();
 
-        String postId = "post_" + faker.random().nextInt(1, 10000);
-        String likeId =  UUID.randomUUID().toString();
+        String postId = "post_" + faker.random().nextInt(1, POSTS_NUMBER);
+        String likeId = UUID.randomUUID().toString();
 
         Like like = new Like(
                 likeId,
@@ -67,8 +69,8 @@ public class Producer {
     public void generateComment() {
         Faker faker = Faker.instance();
 
-        String postId = "post_" + faker.random().nextInt(1, 10000);
-        String commentId =  UUID.randomUUID().toString();
+        String postId = "post_" + faker.random().nextInt(1, POSTS_NUMBER);
+        String commentId = UUID.randomUUID().toString();
 
         Comment comment = new Comment(
                 commentId,

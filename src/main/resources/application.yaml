@@ -5,8 +5,14 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       client-id: spring-boot-producer
     streams:
-      application-id: spring-boot-streams
+      application-id: spring-kafka-streams
       replication-factor: '1'
+      properties:
+        default:
+          value:
+            serde: org.springframework.kafka.support.serializer.JsonSerde
+          key:
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer

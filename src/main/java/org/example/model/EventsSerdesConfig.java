@@ -26,4 +26,14 @@ public class EventsSerdesConfig {
     public Serde<Comment> commentSerde(ObjectMapper objectMapper) {
         return new JsonSerde<>(TYPE_FACTORY.constructType(Comment.class), objectMapper);
     }
+
+    @Bean
+    public Serde<PostCounts> postsCountsSerde(ObjectMapper objectMapper) {
+        return new JsonSerde<>(TYPE_FACTORY.constructType(PostCounts.class), objectMapper);
+    }
+
+    @Bean
+    public Serde<PostWithCounts> postsWithCountsSerde(ObjectMapper objectMapper) {
+        return new JsonSerde<>(TYPE_FACTORY.constructType(PostWithCounts.class), objectMapper);
+    }
 }
