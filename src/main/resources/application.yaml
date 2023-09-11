@@ -8,6 +8,10 @@ spring:
       application-id: spring-kafka-streams
       replication-factor: '1'
       properties:
+        cache:
+          max:
+            bytes:
+              buffering: 0
         default:
           value:
             serde: org.springframework.kafka.support.serializer.JsonSerde

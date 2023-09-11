@@ -1,8 +1,9 @@
-package org.example.model;
+package org.example.model.serdes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import org.apache.kafka.common.serialization.Serde;
+import org.example.model.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.support.serializer.JsonSerde;
